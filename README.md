@@ -1,12 +1,9 @@
 # 基于形式化验证方法的五级流水CPU设计与实现
-
-<div id="content">
-
 ## 设计阶段
-<input type="checkbox" checked><label>7指令mips指令运行</label>
-<input type="checkbox" checked><label>40指令mips指令运行</label>
-<input type="checkbox" ><label>中断未实现</label>
-<input type="checkbox" ><label>异常未实现</label>
+- 7指令mips指令运行
+- 40指令mips指令运行
+- 中断未实现
+- 异常未实现
 
 ## 一、实验目的
 1. 掌握流水线(Pipelined)处理器的思想； 
@@ -17,27 +14,29 @@
 
 ## 二、设计思路
 整体思路图
-<img src="https://i.loli.net/2021/08/24/hjCEUmO6KNxBd2o.png" alt="image.png" style="zoom:50%;" />
+![design_image](https://i.loli.net/2021/08/24/hjCEUmO6KNxBd2o.png)
 <hr>
 流水线功能部件规划
 
 ![image.png](https://i.loli.net/2021/08/26/d6xnrL3voZ28H9E.png)
 
-
 ### （一）实验原理
-$\qquad$下图为单周期的原理图，我们此次的流水cpu将从单周期原理图入手，逐步分析加入流水cpu所需原件。第一步我们主要做的改动就是在每个执行阶段加入级间寄存器，作用时传递译码完成后的数据和控制信号。从执行过程来看每一条指令携带着本条指令所需的所有控制信号和所需数据，通过级间寄存器时，用掉本阶段需要用的信号，不用的继续往下一级传递。同时因为指令携带着自己所需的数据和控制信号，因此不同的阶段可以执行不同的指令。即不断的重复取指，译码，执行，访存，写回5个阶段，在没有冲突的情况下，每个阶段都有不同的指令在执行，大大的提高了效率。
-<img src="https://i.loli.net/2021/08/24/49bXyjhgfINVLBE.png" alt="image.png" style="zoom:85%;" />
-$\qquad$除了流水寄存器外，我们还需要加入控制器，控制器部分与单周期相同，但由于改为五级流水线后，每一个阶段所需要的控制信号仅为一部分，控制器产生信号的阶段为译码阶段，产生控制信号后，依次通过级间寄存器传到下一阶段，若当前阶段需要的信号，则不需要继续传递到下一阶段。另外，考虑到指令间数据的相关性等，我们还需要进行着诸如转发，流水暂停等操作来解决。这也就需要加入一个控制冒险单元来生成暂定stall信号或者flush控制信号，用于暂停指令或者消除控制冒险。此部分下面近一步阐释。下图为加入控制冒险单元后的五级流水原理图。
-<img src="https://i.loli.net/2021/08/24/whX4CIrv7Uq9mFy.png" alt="image.png" style="zoom:90%;" />
+下图为单周期的原理图，我们此次的流水cpu将从单周期原理图入手，逐步分析加入流水cpu所需原件。第一步我们主要做的改动就是在每个执行阶段加入级间寄存器，作用时传递译码完成后的数据和控制信号。从执行过程来看每一条指令携带着本条指令所需的所有控制信号和所需数据，通过级间寄存器时，用掉本阶段需要用的信号，不用的继续往下一级传递。同时因为指令携带着自己所需的数据和控制信号，因此不同的阶段可以执行不同的指令。即不断的重复取指，译码，执行，访存，写回5个阶段，在没有冲突的情况下，每个阶段都有不同的指令在执行，大大的提高了效率。
+
+![image](https://i.loli.net/2021/08/24/49bXyjhgfINVLBE.png)
+
+除了流水寄存器外，我们还需要加入控制器，控制器部分与单周期相同，但由于改为五级流水线后，每一个阶段所需要的控制信号仅为一部分，控制器产生信号的阶段为译码阶段，产生控制信号后，依次通过级间寄存器传到下一阶段，若当前阶段需要的信号，则不需要继续传递到下一阶段。另外，考虑到指令间数据的相关性等，我们还需要进行着诸如转发，流水暂停等操作来解决。这也就需要加入一个控制冒险单元来生成暂定stall信号或者flush控制信号，用于暂停指令或者消除控制冒险。此部分下面近一步阐释。下图为加入控制冒险单元后的五级流水原理图。
+
+![image](https://i.loli.net/2021/08/24/whX4CIrv7Uq9mFy.png)
 
 ### （二）冲突问题解决思路
 #### 冒险产生原因及分析解决
-$\qquad$在流水线 CPU 中，并不是能够完全实现并行执行。在单周期中由于每条指令执行完毕才会执行下一条指令，并不会遇到冒险问题，而在流水线处理器中，由于当前指令可能取决于前一条指令的结果，但此时前一条指令并未执行到产生结果的阶段，这时候，就产生了冒险。冒险分为：
+在流水线 CPU 中，并不是能够完全实现并行执行。在单周期中由于每条指令执行完毕才会执行下一条指令，并不会遇到冒险问题，而在流水线处理器中，由于当前指令可能取决于前一条指令的结果，但此时前一条指令并未执行到产生结果的阶段，这时候，就产生了冒险。冒险分为：
 1. **数据冒险** ：寄存器中的值还未写回到寄存器堆中，下一条指令已经需要从寄存器堆中读取数据； 
 2. **控制冒险**：下一条要执行的指令还未确定，就按照 PC 自增顺序执行了本不该执行的指令(由分支指令引起)
 ##### 数据冒险
 ![image.png](https://i.loli.net/2021/08/24/SF8BiyCDkn1lPj7.png)
-$\qquad$分析上述指令，不难发现，and、or、sub均需要使用$s0的数据，但是add指令需要在写回阶段才能将数据写回到寄存器堆。此时三条指令要么正在译码要么已经经过译码阶段，所用到的寄存器堆数据均不是最新计算出的，因此结果就都是不正确的了。
+分析上述指令，不难发现，and、or、sub均需要使用$s0的数据，但是add指令需要在写回阶段才能将数据写回到寄存器堆。此时三条指令要么正在译码要么已经经过译码阶段，所用到的寄存器堆数据均不是最新计算出的，因此结果就都是不正确的了。
 以上就是数据冒险的特点，数据冒险有以下解决方式： 
 1. 在编译时插入空指令；
 2. 在编译时对指令执行顺序进行重排； 
@@ -47,7 +46,7 @@ $\qquad$分析上述指令，不难发现，and、or、sub均需要使用$s0的�
 
 **数据转发**
 ![image.png](https://i.loli.net/2021/08/24/Pm32ehH14AzXEBg.png)
-$\qquad$从图中分析，可以发现，我们所需要用到的数据在执行阶段就已经由alu计算出，因此我们不需要等待数据更新到寄存器，我们可以直接将计算出的数据转发到下一条指令的执行阶段，根据相应的控制信号便可以选择出正确的数据。从而达到数据转发的目的。
+从图中分析，可以发现，我们所需要用到的数据在执行阶段就已经由alu计算出，因此我们不需要等待数据更新到寄存器，我们可以直接将计算出的数据转发到下一条指令的执行阶段，根据相应的控制信号便可以选择出正确的数据。从而达到数据转发的目的。
 数据转发的伪代码如下：
 ```verilog
 //第一个转发点
@@ -67,15 +66,18 @@ else
     ForwardALUB = Normal_Read_Data //0 正常从寄存器中读取的数据
 ```
 ALU的两路输入均存在转发点，因此用一个三路的多路选择器就可，加入后如下图。
-<img src="https://i.loli.net/2021/08/24/tAFjXwqg6Nh2kS3.png" alt="image.png" style="zoom:90%;" />
+
+![image](https://i.loli.net/2021/08/24/tAFjXwqg6Nh2kS3.png)
+
 **流水线暂停**
 ![image.png](https://i.loli.net/2021/08/24/6k8stgDzMRFE1ed.png)
-$\qquad$多数情况下，数据前推能解决很大一部分数据冒险的问题，然而在上图中，lw指令在访存阶段才能够从数据存储器读取数据，此时 and 指令已经完成 ALU 计算，无法进行数据转发。在这种情况下，必须使流水线暂停，等待数据读取后，再转发到执行阶段。
+多数情况下，数据前推能解决很大一部分数据冒险的问题，然而在上图中，lw指令在访存阶段才能够从数据存储器读取数据，此时 and 指令已经完成 ALU 计算，无法进行数据转发。在这种情况下，必须使流水线暂停，等待数据读取后，再转发到执行阶段。
 
 流水线暂定信号实现方式：**转发策略矩阵**。引入指令集的Tnew和Tuse
 - Tnew:使用哪一个部件来产生寄存器的新值，从D级开始看，逐级递减，直到为0.
 - Tuse:还需要几个时钟周期才用到寄存器的值，从E级开始看
-<img src="https://i.loli.net/2021/08/24/b98CHLYmoDl6GgS.png" alt="image.png" style="zoom:80%;" />
+
+![image](https://i.loli.net/2021/08/24/b98CHLYmoDl6GgS.png)
 
 转发策略矩阵的伪代码如下：
 ```verilog
@@ -112,7 +114,8 @@ $\qquad$多数情况下，数据前推能解决很大一部分数据冒险的问
 3. Decode->Exexcute 阶段级间寄存器清除(避免后续阶段的执行，等待完成后 方可继续执行后续阶段)
 
 解决数据冒险之后，当前数据通路如下
-<img src="https://i.loli.net/2021/08/24/whX4CIrv7Uq9mFy.png" alt="image.png" style="zoom:90%;" />
+
+![image](https://i.loli.net/2021/08/24/whX4CIrv7Uq9mFy.png)
 
 ##### 控制冒险
 控制冒险是分支指令引起的冒险。在五级流水线当中，分支指令在第 4 阶段 才能够决定是否跳转；而此时，前三个阶段已经导致三条指令进入流水线开始执行，这时需要将这三条指令产生的影响全部清除。
@@ -120,7 +123,7 @@ $\qquad$多数情况下，数据前推能解决很大一部分数据冒险的问
 将分支指令的判断提前至译码阶段，此时能够减少两条指令的执行；
 ![image.png](https://i.loli.net/2021/08/24/6wY79m1WnsdHvha.png)
 在寄存器读出数据后添加一个判断相等的模块（cmp），即可提前判断beq
-<img src="https://i.loli.net/2021/08/24/FWVT2NdBPljDGzX.png" alt="image.png" style="zoom:85%;" />
+![image.png](https://i.loli.net/2021/08/24/FWVT2NdBPljDGzX.png)
 此时cmp的两路输入，存在转发点，因此处理方式和ALU类似，加入一个多路选择器即可解决。
 cmp的两个转发点的转发控制信号生成伪代码：
 
@@ -143,7 +146,7 @@ else
 
 ```
 解决后，此时数据通路如下，至此我们的分析和图形搭建就结束，下一步即正式的编码环节。
-<img src="https://i.loli.net/2021/08/24/fDQR9HNOUFGeJ6S.png" alt="image.png" style="zoom:90%;" />
+![image.png](https://i.loli.net/2021/08/24/fDQR9HNOUFGeJ6S.png)
 
 ## 三、各功能部件具体实现
 主要功能部件：
@@ -246,7 +249,7 @@ else
 
 ##### IF $\rightarrow$ ID
 - RTL图
-<img src="https://i.loli.net/2021/08/24/GW74s5xXubiQm8D.png" alt="image.png" style="zoom: 70%;" />
+![image.png](https://i.loli.net/2021/08/24/GW74s5xXubiQm8D.png)
 
 - 代码
 ```verilog
@@ -297,7 +300,7 @@ endmodule
 ```
 ##### ID $\rightarrow$ EX
 - RTL图
-<img src="https://i.loli.net/2021/08/24/gzOrwFLpGWkTDSQ.png" alt="image.png" style="zoom: 60%;" />
+![image.png](https://i.loli.net/2021/08/24/gzOrwFLpGWkTDSQ.png)
 
 - 代码
 ```verilog
@@ -453,7 +456,7 @@ endmodule
 ```
 ##### MEM $\rightarrow$ WB
 - RTL图
-<img src="https://i.loli.net/2021/08/24/FVpXYu6isCtWrwa.png" alt="image.png" style="zoom: 70%;" />
+![image.png](https://i.loli.net/2021/08/24/FVpXYu6isCtWrwa.png)
 
 - 代码
 ```verilog
@@ -492,7 +495,7 @@ endmodule
 ```
 #### 冒险控制单元
 - RTL图
-<img src="https://i.loli.net/2021/08/24/5S1pmHifAqV9F3L.png" alt="image.png" style="zoom:80%;" />
+![image.png](https://i.loli.net/2021/08/24/5S1pmHifAqV9F3L.png)
 
 - 代码
 ```verilog
@@ -642,7 +645,7 @@ endmodule
 ```
 #### 寄存器
 - RTL图
-<img src="https://i.loli.net/2021/08/24/xcK5HlTaInGms2z.png" alt="image.png" style="zoom:80%;" />
+![image.png](https://i.loli.net/2021/08/24/xcK5HlTaInGms2z.png)
 
 - 代码
 ```verilog
@@ -706,7 +709,7 @@ endmodule
 ```
 #### 存储器
 - RTL图
-<img src="https://i.loli.net/2021/08/24/y49CNTRJGhiPp2o.png" alt="image.png" style="zoom:60%;" />
+![image.png](https://i.loli.net/2021/08/24/y49CNTRJGhiPp2o.png)
 
 ![image.png](https://i.loli.net/2021/08/24/dwgY2H97ItMjab4.png)
 
@@ -808,7 +811,7 @@ endmodule
 ```
 #### 转发控制单元
 - RTL图
-<img src="https://i.loli.net/2021/08/24/E3IZxDzHSvMQq7i.png" alt="image.png" style="zoom: 80%;" />
+![image.png](https://i.loli.net/2021/08/24/E3IZxDzHSvMQq7i.png)
 
 - 代码
 ```verilog
@@ -899,7 +902,7 @@ endmodule
 
 ```
 - RTL图
-<img src="https://i.loli.net/2021/08/24/ZaSHjYMO8l6rymt.png" alt="image.png" style="zoom:80%;" />
+![image.png](https://i.loli.net/2021/08/24/ZaSHjYMO8l6rymt.png)
 
 - 代码
 ```verilog
@@ -1094,7 +1097,7 @@ endmodule
 
 #### PC
 - RTL图
-<img src="https://i.loli.net/2021/08/24/7GnKTpoxQUgOlcF.png" alt="image.png" style="zoom:80%;" />
+![image.png](https://i.loli.net/2021/08/24/7GnKTpoxQUgOlcF.png
 
 - 代码
 ```verilog
@@ -1121,7 +1124,7 @@ endmodule
 
 #### NPC
 - RTL图
-<img src="https://i.loli.net/2021/08/24/8jhrwIBlVdXyLWm.png" alt="image.png" style="zoom:80%;" />
+![image.png](https://i.loli.net/2021/08/24/8jhrwIBlVdXyLWm.png
 
 - 代码
 ```verilog
@@ -1152,19 +1155,12 @@ endmodule
 ![7_inst_5.jpg](https://i.loli.net/2021/08/26/VBr1yOon9tMYdsm.jpg)
 
 ### 40 Inst
-<img src="https://i.loli.net/2021/08/24/hj4oUIPpS8itOAM.png" alt="image.png" style="zoom:100%;" />
-<img src="https://i.loli.net/2021/08/24/kqtmQSXYe5KBIxP.png" alt="image.png" style="zoom:100%;" />
-<img src="https://i.loli.net/2021/08/24/fndp7SeI3jo8D9y.png" alt="image.png" style="zoom:100%;" />
-<img src="https://i.loli.net/2021/08/24/7I5gLlr2xhmnkWe.png" alt="image.png" style="zoom:100%;" />
-<img src="https://i.loli.net/2021/08/24/qJmf4RoKxHskChL.png" alt="image.png" style="zoom:100%;" />
+![image.png](https://i.loli.net/2021/08/24/hj4oUIPpS8itOAM.png)
+![image.png](https://i.loli.net/2021/08/24/kqtmQSXYe5KBIxP.png)
+![image.png](https://i.loli.net/2021/08/24/fndp7SeI3jo8D9y.png)
+![image.png](https://i.loli.net/2021/08/24/7I5gLlr2xhmnkWe.png)
+![image.png](https://i.loli.net/2021/08/24/qJmf4RoKxHskChL.png)
 
 ## 五、开发环境
 - Vivado v2019.2 (64-bit)
 - MARS 4.4
-
-</div>
-<style>
-    div{
-        font-family: "STKaiti", "Times New Roman", Times;
-    }
-</style>
