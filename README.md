@@ -1131,7 +1131,7 @@ endmodule
 #### PC
 - RTL图
 
-![image.png](https://i.loli.net/2021/08/24/7GnKTpoxQUgOlcF.png
+![image.png](https://i.loli.net/2021/08/24/7GnKTpoxQUgOlcF.png)
 
 - 代码
 ```verilog
@@ -1159,7 +1159,7 @@ endmodule
 #### NPC
 - RTL图
 
-![image.png](https://i.loli.net/2021/08/24/8jhrwIBlVdXyLWm.png
+![image.png](https://i.loli.net/2021/08/24/8jhrwIBlVdXyLWm.png)
 
 - 代码
 ```verilog
