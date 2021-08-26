@@ -1,0 +1,34 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Tue Aug 24 14:35:36 2021
+# Process ID: 16488
+# Current directory: D:/Desktop/Project/five_stage_pipeLineCpu
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14780 D:\Desktop\Project\five_stage_pipeLineCpu\five_stage_pipeLineCpu.xpr
+# Log file: D:/Desktop/Project/five_stage_pipeLineCpu/vivado.log
+# Journal file: D:/Desktop/Project/five_stage_pipeLineCpu\vivado.jou
+#-----------------------------------------------------------
+start_guopopen_project D:/Desktop/Project/five_stage_pipeLineCpu/five_stage_pipeLineCpu.xpupupdate_compile_order -fileset sources_close [ open D:/Desktop/Project/five_stage_pipeLineCpu/five_stage_pipeLineCpu.srcs/sources_1/new/stddef.v w ]
+add_files D:/Desktop/Project/five_stage_pipeLineCpu/five_stage_pipeLineCpu.srcs/sources_1/new/stddef.v
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+launch_simulation
+source mips_tb.tcl
+relaunch_sim
+create_wave_config
+save_wave_config {D:/Desktop/Project/five_stage_pipeline_40inst.wcfg}
+add_files -fileset sim_1 -norecurse D:/Desktop/Project/five_stage_pipeline_40inst.wcfg
+set_property xsim.view D:/Desktop/Project/five_stage_pipeline_40inst.wcfg [get_filesets sim_1]
+close_sim
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+reset_run synth_1
+synth_design -rtl -name rtl_1
+write_schematic -format pdf -orientation portrait D:/Desktop/Project/schematic.pdf
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1

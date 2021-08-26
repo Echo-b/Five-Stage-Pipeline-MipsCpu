@@ -1,0 +1,29 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/ALU.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/CMP.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/Ctrl.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/DM.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/ExToMem.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/Foward.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/HazardUnit.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/IM.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/IdToEx.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/IfToId.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/MFA.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/MFB.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/MemToWb.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/NPC.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/PC.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/Rf.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/exp.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/pipelinecpu.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/stall_creat.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sources_1/new/stall_solve.v" \
+"../../../../five_stage_pipeLineCpu.srcs/sim_1/new/mips_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -1,0 +1,35 @@
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: D:/vivado/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 54ef05665663420e8e4247095dc14b28 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot mips_tb_behav xil_defaultlib.mips_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 26 for port 'adr' [D:/Desktop/Project/five_stage_pipeLineCpu/five_stage_pipeLineCpu.srcs/sources_1/new/pipelinecpu.v:103]
+WARNING: [VRFC 10-5021] port 'branchD' is not connected on this instance [D:/Desktop/Project/five_stage_pipeLineCpu/five_stage_pipeLineCpu.srcs/sources_1/new/pipelinecpu.v:188]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.NPC
+Compiling module xil_defaultlib.PC
+Compiling module xil_defaultlib.IM
+Compiling module xil_defaultlib.IfToId
+Compiling module xil_defaultlib.HazardUnit
+Compiling module xil_defaultlib.Ctrl
+Compiling module xil_defaultlib.Rf
+Compiling module xil_defaultlib.exp
+Compiling module xil_defaultlib.CMP
+Compiling module xil_defaultlib.stall_solve
+Compiling module xil_defaultlib.IdToEx
+Compiling module xil_defaultlib.Foward
+Compiling module xil_defaultlib.MFA
+Compiling module xil_defaultlib.MFB
+Compiling module xil_defaultlib.ALU
+Compiling module xil_defaultlib.ExToMem
+Compiling module xil_defaultlib.DM
+Compiling module xil_defaultlib.MemToWb
+Compiling module xil_defaultlib.stall_creat
+Compiling module xil_defaultlib.pipelinecpu
+Compiling module xil_defaultlib.mips_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot mips_tb_behav

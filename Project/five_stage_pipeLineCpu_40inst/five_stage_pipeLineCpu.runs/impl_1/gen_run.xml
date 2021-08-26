@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7k70tfbv676-1" LaunchTime="1629859891">
+  <File Type="BITSTR-BMM" Name="pipelinecpu_bd.bmm"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="pipelinecpu_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="pipelinecpu_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR" Name="pipelinecpu_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="pipelinecpu.tcl"/>
+  <File Type="OPT-TIMING" Name="pipelinecpu_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="pipelinecpu_opt.dcp"/>
+  <File Type="ROUTE-PWR-SUM" Name="pipelinecpu_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="pipelinecpu_reports.tcl"/>
+  <File Type="OPT-DRC" Name="pipelinecpu_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="pipelinecpu.hwdef"/>
+  <File Type="PWROPT-DCP" Name="pipelinecpu_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="pipelinecpu_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="pipelinecpu_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="pipelinecpu_placed.dcp"/>
+  <File Type="PLACE-IO" Name="pipelinecpu_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="pipelinecpu_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="pipelinecpu_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="pipelinecpu_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="pipelinecpu_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="pipelinecpu_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="pipelinecpu_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-TIMING" Name="pipelinecpu_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="pipelinecpu_postplace_pwropt.dcp"/>
+  <File Type="BG-BIN" Name="pipelinecpu.bin"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="pipelinecpu_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="pipelinecpu_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="pipelinecpu_drc_physopted.rpt"/>
+  <File Type="BITSTR-MSK" Name="pipelinecpu.msk"/>
+  <File Type="PHYSOPT-TIMING" Name="pipelinecpu_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="pipelinecpu_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="pipelinecpu_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="pipelinecpu_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="pipelinecpu_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="pipelinecpu_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="pipelinecpu_drc_routed.rpx"/>
+  <File Type="BITSTR-MMI" Name="pipelinecpu.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="pipelinecpu_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="pipelinecpu_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="pipelinecpu_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="pipelinecpu_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="pipelinecpu_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="pipelinecpu_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="pipelinecpu_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="pipelinecpu_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="pipelinecpu_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="pipelinecpu_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="pipelinecpu_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="pipelinecpu_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="pipelinecpu_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="pipelinecpu_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="pipelinecpu_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="pipelinecpu_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="pipelinecpu_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="pipelinecpu_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="pipelinecpu_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="pipelinecpu_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="pipelinecpu_bus_skew_postroute_physopted.pb"/>
+  <File Type="BG-BIT" Name="pipelinecpu.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="pipelinecpu_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-RBT" Name="pipelinecpu.rbt"/>
+  <File Type="BITSTR-NKY" Name="pipelinecpu.nky"/>
+  <File Type="PDI-FILE" Name="pipelinecpu.pdi"/>
+  <File Type="RCFI_FILE" Name="pipelinecpu.rcfi"/>
+  <File Type="CFI_FILE" Name="pipelinecpu.cfi"/>
+  <File Type="RNPI_FILE" Name="pipelinecpu.rnpi"/>
+  <File Type="NPI_FILE" Name="pipelinecpu.npi"/>
+  <File Type="RBD_FILE" Name="pipelinecpu.rbd"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="pipelinecpu.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="pipelinecpu.sysdef"/>
+  <File Type="BG-BGN" Name="pipelinecpu.bgn"/>
+  <File Type="BG-DRC" Name="pipelinecpu.drc"/>
+  <File Type="RDI-RDI" Name="pipelinecpu.vdi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/stddef.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/ALU.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/CMP.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Ctrl.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/DM.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/ExToMem.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Foward.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/HazardUnit.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/IM.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/IdToEx.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/IfToId.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/MFA.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/MFB.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/MemToWb.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/NPC.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/PC.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Rf.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/exp.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/stall_creat.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/stall_solve.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/pipelinecpu.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="pipelinecpu"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design" EnableStepBool="1"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>
